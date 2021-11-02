@@ -33,6 +33,8 @@ $ ./NumberStatistics -n [1,2,4,3,2,4,4,5]
 
     d. 运算功能：可以实现大整数的加法、减法、乘法和除法运算。
 
+    f. 扩展功能：平方根运算。
+
 
 ```bash
 $ ./BigintegerCalculator -h //查看帮助
@@ -44,6 +46,8 @@ Usage of ./BigintegerCalculator:
   -h	help
   -o file
     	file to output
+  -sqrt num
+    	num to sqrt
 
 // 从命令行输入，一次输入一个表达式：
 $ ./BigintegerCalculator -e 1113213198*23213112313
@@ -83,4 +87,7 @@ $ cat output.txt
 21321-3424098342930470 = -3424098342909149
 3128937891/21323 = 146740
 182738177*23948278 = 4376264664009206
+
+$ ./BigintegerCalculator -sqrt 4535948                                                  
+[*] sqrt(4535948) = 2129
 ```

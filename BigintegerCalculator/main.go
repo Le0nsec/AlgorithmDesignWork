@@ -20,12 +20,14 @@ var (
 	outputSlice []string
 	inputFile   string
 	outputFile  string
+	sqrtNum     string
 )
 
 func main() {
 	flag.StringVar(&expr, "e", "", "input arithmetic `expression`")
 	flag.StringVar(&inputFile, "f", "", "`file` to read by line")
 	flag.StringVar(&outputFile, "o", "", "`file` to output")
+	flag.StringVar(&sqrtNum, "sqrt", "", "`num` to sqrt")
 	flag.BoolVar(&help, "h", false, "help")
 	flag.Parse()
 
@@ -34,7 +36,7 @@ func main() {
 		return
 	}
 
-	if expr == "" && inputFile == "" {
+	if expr == "" && inputFile == "" && sqrtNum == "" {
 		fmt.Println("\x1b[31m[!] Please use -h to view help, like `./BigintegerCalculator -h`\x1b[0m")
 		return
 	}
@@ -53,6 +55,7 @@ func main() {
 		}
 		result := calc(expr)
 		fmt.Printf("\x1b[32m[*]\x1b[0m %s = %s\n", expr, result)
+		return
 	}
 
 	if inputFile != "" {
@@ -77,10 +80,32 @@ func main() {
 		if outputFile != "" {
 			writeLine(outputFile, outputSlice)
 			fmt.Printf("\x1b[32m[*] The calculation result is saved to %s successfully!\x1b[0m\n", outputFile)
+			return
 		}
 	} else if outputFile != "" {
 		fmt.Println("\x1b[31m[!] require -f\x1b[0m")
 		return
+	}
+
+	if sqrtNum != "" {
+		pattern := `^[\d+]*$`
+		reg := regexp.MustCompile(pattern)
+		if reg == nil {
+			fmt.Println("\x1b[31m[!] regexp err\x1b[0m")
+			return
+		}
+		isNum := reg.MatchString(sqrtNum)
+		if !isNum {
+			fmt.Println("\x1b[31m[!] invalid format\x1b[0m")
+			return
+		}
+		big, ok := new(big.Int).SetString(sqrtNum, 10)
+		if !ok {
+			fmt.Println("\x1b[31m[!] invalid format\x1b[0m")
+			return
+		}
+		big.Sqrt(big)
+		fmt.Printf("\x1b[32m[*]\x1b[0m sqrt(%s) = %s\n", sqrtNum, big)
 	}
 
 }

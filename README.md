@@ -13,7 +13,7 @@
 Usage of ./NumberStatistics:
 $ ./NumberStatistics -h //查看帮助
 $ ./NumberStatistics -n [1,2,4,3,2,4,4,5]
-// Result: The mode is: [4], and the number of occurrences is: 3.
+# Result: The mode is: [4], and the number of occurrences is: 3.
 ```
 
 
@@ -49,11 +49,11 @@ Usage of ./BigintegerCalculator:
   -sqrt num
     	num to sqrt
 
-// 从命令行输入，一次输入一个表达式：
+# 从命令行输入，一次输入一个表达式：
 $ ./BigintegerCalculator -e 1113213198*23213112313
 [*] 1113213198*23213112313 = 25841142993487906974
 
-// 从文件批量按行读取表达式：
+# 从文件批量按行读取表达式：
 $ ./BigintegerCalculator -f expr.txt 
 [*] The calculation results of batch processing are as follows:
 [*] 1+2 = 3
@@ -65,7 +65,7 @@ $ ./BigintegerCalculator -f expr.txt
 [*] 3128937891/21323 = 146740
 [*] 182738177*23948278 = 4376264664009206
 
-// 批量计算并保存到文件：
+# 批量计算并保存到文件：
 $ ./BigintegerCalculator -f expr.txt -o output.txt
 [*] The calculation results of batch processing are as follows:
 [*] 1+2 = 3
@@ -87,7 +87,11 @@ $ cat output.txt
 21321-3424098342930470 = -3424098342909149
 3128937891/21323 = 146740
 182738177*23948278 = 4376264664009206
+<<<<<<< HEAD
 
 $ ./BigintegerCalculator -sqrt 4535948                                                  
 [*] sqrt(4535948) = 2129
 ```
+=======
+```
+>>>>>>> c9b5abdaade6aa2001e3ffc4a5477476d7e31fa2

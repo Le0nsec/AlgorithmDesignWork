@@ -247,30 +247,6 @@ func karatsuba(z, x, y nat) {
 		basicMul(z, x, y)
 		return
 	}
-	// n&1 == 0 && n >= karatsubaThreshold && n >= 2
-
-	// Karatsuba multiplication is based on the observation that
-	// for two numbers x and y with:
-	//
-	//   x = x1*b + x0
-	//   y = y1*b + y0
-	//
-	// the product x*y can be obtained with 3 products z2, z1, z0
-	// instead of 4:
-	//
-	//   x*y = x1*y1*b*b + (x1*y0 + x0*y1)*b + x0*y0
-	//       =    z2*b*b +              z1*b +    z0
-	//
-	// with:
-	//
-	//   xd = x1 - x0
-	//   yd = y0 - y1
-	//
-	//   z1 =      xd*yd                    + z2 + z0
-	//      = (x1-x0)*(y0 - y1)             + z2 + z0
-	//      = x1*y0 - x1*y1 - x0*y0 + x0*y1 + z2 + z0
-	//      = x1*y0 -    z2 -    z0 + x0*y1 + z2 + z0
-	//      = x1*y0                 + x0*y1
 
 	// split x, y into "digits"
 	n2 := n >> 1              // n2 >= 1

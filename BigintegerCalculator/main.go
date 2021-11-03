@@ -164,7 +164,6 @@ func regexpOperator(expr string) string {
 	} else {
 		return operator[0][0]
 	}
-
 }
 
 // checkExpr 对输入的算术表达式限制格式，正确返回true，错误返回false
@@ -233,7 +232,7 @@ func readLine(filename string) []string {
 		}
 		ok := checkExpr(string(a))
 		if !ok {
-			fmt.Printf("\x1b[31m[!] invalid format\n[*] Incorrect expression:\n[*]\x1b[0m %s", string(a))
+			fmt.Printf("\x1b[31m[!] invalid format\n[*] Incorrect expression:\n[*]\x1b[0m %s\n", string(a))
 			os.Exit(1)
 		}
 		slice = append(slice, string(a))
